@@ -21,7 +21,7 @@ module.exports = function (chunkSize, opts) {
 
     // buffer to store the last few bytes of incoming data
     // if it does not divide evenly into chunkSize
-    var buffer = new Buffer(0);
+    var buffer = Buffer.alloc(0);
 
     var transformOpts = {
         encoding: encoding,
@@ -34,7 +34,7 @@ module.exports = function (chunkSize, opts) {
         var totalLength = allData.length;
         var remainder = totalLength % chunkSize;
         var cutoff = totalLength - remainder;
-        for (var i=0 ; i<cutoff ; i+=chunkSize) {
+    for (var i=0 ; i<cutoff ; i+=chunkSize) {
             var chunk = allData.slice(i, i+chunkSize);
             this.push(chunk);
         }
@@ -47,7 +47,7 @@ module.exports = function (chunkSize, opts) {
         flushFunction = function (next) {
 
             if (opts.align && buffer.length > 0) {
-                var remaining = new Buffer(chunkSize - buffer.length);
+                var remaining = Buffer.alloc(chunkSize - buffer.length);
                 remaining.fill(0);
                 buffer = Buffer.concat([ buffer, remaining ], chunkSize);
             }
