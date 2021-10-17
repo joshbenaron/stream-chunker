@@ -23,7 +23,7 @@
   "author": "Kristian Lyngbaek",
   "license": "MIT",
   "dependencies": {
-    "through2": "~2.0.0"
+    "through2": "^4.0.2"
   },
   "devDependencies": {
     "chunky": "~0.0.0",
